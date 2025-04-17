@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="admin(failed)">
+    <classes>
+      <class name="admin.LotController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test07BiddersPdf"/>
+        </methods>
+      </class> <!-- admin.LotController -->
+      <class name="admin.SymmetryController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test03SymmetryExcel"/>
+        </methods>
+      </class> <!-- admin.SymmetryController -->
+      <class name="admin.MailInvoiceLotDiamondController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="Test02PostSendmailEmailIdAuctionID"/>
+          <include name="Test03PostSendMailsAllLots"/>
+        </methods>
+      </class> <!-- admin.MailInvoiceLotDiamondController -->
+      <class name="admin.ShapeController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="testcreateSymmetry03"/>
+        </methods>
+      </class> <!-- admin.ShapeController -->
+      <class name="admin.DatabaseBackupController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test03GetBackupurl"/>
+          <include name="test01PostStart"/>
+        </methods>
+      </class> <!-- admin.DatabaseBackupController -->
+      <class name="admin.LedgerController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test02Ledger"/>
+        </methods>
+      </class> <!-- admin.LedgerController -->
+      <class name="admin.UserController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="UpdateUserUpload"/>
+        </methods>
+      </class> <!-- admin.UserController -->
+    </classes>
+  </test> <!-- admin(failed) -->
+</suite> <!-- Failed suite [Suite] -->

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.testng.eclipse.launchconfig">
+    <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.m2e.launchconfig.classpathProvider"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.testng.remote.RemoteTestNG"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="SamyakAPITestNGFramework"/>
+    <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
+    <mapAttribute key="org.testng.eclipse.ALL_CLASS_METHODS"/>
+    <listAttribute key="org.testng.eclipse.CLASS_TEST_LIST">
+        <listEntry value="admin.AutoBiddingController"/>
+        <listEntry value="utils.Constant"/>
+        <listEntry value="admin.ReservationTransactionController"/>
+        <listEntry value="admin.BalanceSheetController"/>
+        <listEntry value="admin.AnnouncementController"/>
+        <listEntry value="admin.RemarkController"/>
+        <listEntry value="admin.ClarityController"/>
+        <listEntry value="admin.PolishController"/>
+        <listEntry value="admin.SymmetryController"/>
+        <listEntry value="utils.BaseTest"/>
+        <listEntry value="admin.MailInvoiceLotDiamondController"/>
+        <listEntry value="admin.LotDiamondController"/>
+        <listEntry value="admin.DatabaseBackupController"/>
+        <listEntry value="admin.RefreshTokencontroller"/>
+        <listEntry value="admin.UserController"/>
+        <listEntry value="admin.rapaportController"/>
+        <listEntry value="admin.BidController"/>
+        <listEntry value="admin.LedgerController"/>
+        <listEntry value="admin.FilterController"/>
+        <listEntry value="admin.InvoiceDetailsController"/>
+        <listEntry value="admin.AuthenticationController"/>
+        <listEntry value="admin.LabController"/>
+        <listEntry value="admin.ColorController"/>
+        <listEntry value="admin.FluoresceneController"/>
+        <listEntry value="admin.CountryController"/>
+        <listEntry value="admin.BrandController"/>
+        <listEntry value="admin.ImageController"/>
+        <listEntry value="admin.UserControllerMerged"/>
+        <listEntry value="admin.ForgotPasswordController"/>
+        <listEntry value="admin.AuctionController"/>
+        <listEntry value="admin.LotDiamondExcelController"/>
+        <listEntry value="admin.BidderSupplierSummaryController"/>
+        <listEntry value="admin.CompanyController"/>
+        <listEntry value="admin.ShapeController"/>
+        <listEntry value="admin.GSBController"/>
+        <listEntry value="admin.LotDiamondBidController"/>
+        <listEntry value="admin.InvoiceListController"/>
+        <listEntry value="admin.LotController"/>
+        <listEntry value="admin.ReservationController"/>
+        <listEntry value="admin.CutController"/>
+        <listEntry value="admin.NegotiationDetailsController"/>
+    </listAttribute>
+    <listAttribute key="org.testng.eclipse.METHOD_TEST_LIST"/>
+    <listAttribute key="org.testng.eclipse.PACKAGE_TEST_LIST"/>
+    <stringAttribute key="org.testng.eclipse.PRE_DEFINED_LISTENERS" value=""/>
+    <intAttribute key="org.testng.eclipse.TYPE" value="1"/>
+</launchConfiguration>

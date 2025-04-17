@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<test
+		thread-count="5"
+		name="admin">
+		<!--<classes>
+		   <class name="admin.AutoBiddingController" />
+			<class name="admin.UserController" />
+			<class name="admin.AuctionController" />
+			<class name="admin.AuthenticationController" />
+			<class name="admin.BidderSupplierSummaryController" />
+			<class name="admin.CompanyController" />
+			<class name="admin.CountryController" />
+			<class name="admin.CutController" />
+			<class name="admin.DatabaseBackupController" />
+			<class name="admin.FilterController" />
+			<class name="admin.FluoresceneController" />
+			<class name="admin.ForgotPasswordController" />
+			<class name="admin.GSBController" />
+			<class name="admin.InvoiceDetailsController" />
+			<class name="admin.InvoiceListController" />
+			<class name="admin.LedgerController" />
+			<class name="admin.LotDiamondBidController" />
+			<class name="admin.LotDiamondExcelController" />
+			<class name="admin.NegotiationDetailsController" />
+			<class name="admin.PolishController" />
+			<class name="admin.ReservationTransactionController" />
+			<class name="admin.SymmetryController" />
+			<class name="admin.UserController" />
+			<class name="admin.BalanceSheetController" />
+			<class name="admin.BidController" />
+			<class name="admin.BrandController" />
+			<class name="admin.ClarityController" />
+			<class name="admin.ColorController" />
+			<class name="admin.ImageController" />
+			<class name="admin.LabController" />
+			<class name="admin.LotController" />
+			<class name="admin.LotDiamondController" />
+			<class name="admin.MailInvoiceLotDiamondController" />
+			<class name="admin.rapaportController" />
+
+			<class name="admin.RefreshTokencontroller" />
+			<class name="admin.RemarkController" />
+			<class name="admin.ReservationController" />
+			<class name="admin.ShapeController" />
+			<class name="admin.UserControllerMerged" />
+
+		</classes>-->
+ <classes>
+      <class name="admin.LedgerController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test02Ledger"/>
+        </methods>
+      </class> <!-- admin.LedgerController -->
+      <class name="admin.LotController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test07BiddersPdf"/>
+        </methods>
+      </class> <!-- admin.LotController -->
+      <class name="admin.MailInvoiceLotDiamondController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="Test02PostSendmailEmailIdAuctionID"/>
+          <include name="Test03PostSendMailsAllLots"/>
+        </methods>
+      </class> <!-- admin.MailInvoiceLotDiamondController -->
+      <class name="admin.SymmetryController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test03SymmetryExcel"/>
+        </methods>
+      </class> <!-- admin.SymmetryController -->
+      <class name="admin.DatabaseBackupController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test03GetBackupurl"/>
+          <include name="test01PostStart"/>
+        </methods>
+      </class> <!-- admin.DatabaseBackupController -->
+      <class name="admin.ShapeController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="testcreateSymmetry03"/>
+        </methods>
+      </class> <!-- admin.ShapeController -->
+      <class name="admin.UserController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="UpdateUserUpload"/>
+        </methods>
+      </class> <!-- admin.UserController -->
+    </classes>		
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

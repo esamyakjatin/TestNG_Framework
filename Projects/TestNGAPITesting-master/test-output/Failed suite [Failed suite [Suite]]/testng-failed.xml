@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Failed suite [Failed suite [Suite]]]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="admin(failed)(failed)(failed)">
+    <classes>
+      <class name="admin.ShapeController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="testcreateSymmetry03"/>
+        </methods>
+      </class> <!-- admin.ShapeController -->
+      <class name="admin.ClarityController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test03PostClarityExcel"/>
+        </methods>
+      </class> <!-- admin.ClarityController -->
+      <class name="admin.PolishController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test03PolishExcel"/>
+        </methods>
+      </class> <!-- admin.PolishController -->
+      <class name="admin.FluoresceneController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="tset03PostFluoresceneExcel"/>
+          <include name="afterSuite"/>
+        </methods>
+      </class> <!-- admin.FluoresceneController -->
+      <class name="admin.ColorController">
+        <methods>
+          <include name="Test03PostColorExcel"/>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+        </methods>
+      </class> <!-- admin.ColorController -->
+      <class name="admin.ReservationTransactionController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test01PostCreateReservation"/>
+        </methods>
+      </class> <!-- admin.ReservationTransactionController -->
+      <class name="admin.ReservationController">
+        <methods>
+          <include name="Test03PostUpdateSlotTransaction"/>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+        </methods>
+      </class> <!-- admin.ReservationController -->
+      <class name="admin.LabController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="Test03LabExcel"/>
+          <include name="afterSuite"/>
+        </methods>
+      </class> <!-- admin.LabController -->
+      <class name="admin.SymmetryController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test03SymmetryExcel"/>
+        </methods>
+      </class> <!-- admin.SymmetryController -->
+      <class name="admin.CutController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test03PostCutExcel"/>
+        </methods>
+      </class> <!-- admin.CutController -->
+    </classes>
+  </test> <!-- admin(failed)(failed)(failed) -->
+</suite> <!-- Failed suite [Failed suite [Failed suite [Suite]]] -->
