@@ -3,13 +3,6 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="admin(failed)">
     <classes>
-      <class name="admin.LotController">
-        <methods>
-          <include name="beforeSuite"/>
-          <include name="afterSuite"/>
-          <include name="test07BiddersPdf"/>
-        </methods>
-      </class> <!-- admin.LotController -->
       <class name="admin.SymmetryController">
         <methods>
           <include name="beforeSuite"/>
@@ -17,21 +10,37 @@
           <include name="test03SymmetryExcel"/>
         </methods>
       </class> <!-- admin.SymmetryController -->
-      <class name="admin.MailInvoiceLotDiamondController">
+      <class name="admin.ImageController">
         <methods>
           <include name="beforeSuite"/>
           <include name="afterSuite"/>
-          <include name="Test02PostSendmailEmailIdAuctionID"/>
-          <include name="Test03PostSendMailsAllLots"/>
+          <include name="Test04GetBulkBidThumbnailLogo"/>
+          <include name="Test03GetFetchImages"/>
+          <include name="Test01GetTopbarLogo"/>
+          <include name="Test02GetImages"/>
         </methods>
-      </class> <!-- admin.MailInvoiceLotDiamondController -->
-      <class name="admin.ShapeController">
+      </class> <!-- admin.ImageController -->
+      <class name="admin.BrandController">
         <methods>
           <include name="beforeSuite"/>
           <include name="afterSuite"/>
-          <include name="testcreateSymmetry03"/>
+          <include name="test02GetBrand"/>
         </methods>
-      </class> <!-- admin.ShapeController -->
+      </class> <!-- admin.BrandController -->
+      <class name="admin.LedgerController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test02Ledger"/>
+        </methods>
+      </class> <!-- admin.LedgerController -->
+      <class name="admin.LabController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="Test03LabExcel"/>
+          <include name="afterSuite"/>
+        </methods>
+      </class> <!-- admin.LabController -->
       <class name="admin.DatabaseBackupController">
         <methods>
           <include name="beforeSuite"/>
@@ -40,13 +49,20 @@
           <include name="test01PostStart"/>
         </methods>
       </class> <!-- admin.DatabaseBackupController -->
-      <class name="admin.LedgerController">
+      <class name="admin.LotController">
         <methods>
           <include name="beforeSuite"/>
           <include name="afterSuite"/>
-          <include name="test02Ledger"/>
+          <include name="test07BiddersPdf"/>
         </methods>
-      </class> <!-- admin.LedgerController -->
+      </class> <!-- admin.LotController -->
+      <class name="admin.CutController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test03PostCutExcel"/>
+        </methods>
+      </class> <!-- admin.CutController -->
       <class name="admin.UserController">
         <methods>
           <include name="beforeSuite"/>
@@ -54,6 +70,88 @@
           <include name="UpdateUserUpload"/>
         </methods>
       </class> <!-- admin.UserController -->
+      <class name="admin.FluoresceneController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="tset03PostFluoresceneExcel"/>
+        </methods>
+      </class> <!-- admin.FluoresceneController -->
+      <class name="admin.ShapeController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="testcreateSymmetry03"/>
+        </methods>
+      </class> <!-- admin.ShapeController -->
+      <class name="admin.MailInvoiceLotDiamondController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="Test03PostSendMailsAllLots"/>
+        </methods>
+      </class> <!-- admin.MailInvoiceLotDiamondController -->
+      <class name="admin.BidController">
+        <methods>
+          <include name="Test13GetBidDelete"/>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="Test01PutBidUpdate"/>
+          <include name="Test12GetBidHistory"/>
+          <include name="Test11GetAllCounts"/>
+        </methods>
+      </class> <!-- admin.BidController -->
+      <class name="admin.ReservationTransactionController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test01PostCreateReservation"/>
+        </methods>
+      </class> <!-- admin.ReservationTransactionController -->
+      <class name="admin.ForgotPasswordController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test01AuthResetPassword"/>
+          <include name="test02AuthForgotPassword"/>
+        </methods>
+      </class> <!-- admin.ForgotPasswordController -->
+      <class name="admin.PolishController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test03PolishExcel"/>
+        </methods>
+      </class> <!-- admin.PolishController -->
+      <class name="admin.UserControllerMerged">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="Test02GetUserRole"/>
+        </methods>
+      </class> <!-- admin.UserControllerMerged -->
+      <class name="admin.CountryController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="test01GetCountryId"/>
+        </methods>
+      </class> <!-- admin.CountryController -->
+      <class name="admin.AutoBiddingController">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="Test02PutAutoBidExcel"/>
+        </methods>
+      </class> <!-- admin.AutoBiddingController -->
+      <class name="admin.ReservationController">
+        <methods>
+          <include name="Test03PostUpdateSlotTransaction"/>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="Test02GetSlots"/>
+        </methods>
+      </class> <!-- admin.ReservationController -->
     </classes>
   </test> <!-- admin(failed) -->
 </suite> <!-- Failed suite [Suite] -->

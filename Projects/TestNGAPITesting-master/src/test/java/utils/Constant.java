@@ -2,7 +2,7 @@ package utils;
 
 public class Constant {
 
-	public static String adminCredentials = "{\"payload\": \"9gdgHMJrNDhlD+sXLZ1yY7/Xd/Akkcj+1PLzye9oiUrVZY0HnUS4Wwnzl2uCy0vbfDU3KGeSwekHsOcCl9oNPQ==\"}";
+	public static String adminCredentials = "{\"payload\": \"SKotty6FByw7PPuhCfaMTdhaNAjuk06WFQIiqC6dG1+LJVS/qUyW3jo75seV591L\"}";
 	public static String adminPassword = "samyak@2024";
 	
 	public static String FILE_PATH = System.getProperty("user.dir");

@@ -34,20 +34,20 @@ public class BidderSupplierSummaryController extends BaseTest {
 		request.header("Content-Type", "application/json");
 
 		// String userId="7828500F-5781-40D5-9E61-ADF2A09EB993";
-		String auctionId = "d68848a2-67a3-453f-85af-2a0aaa14b9e2";
+		//String auctionId = "d68848a2-67a3-453f-85af-2a0aaa14b9e2";
 		// String countryId = "435a09ab-ad6e-11ef-8d40-c8d3ffbc6ac6";
 		// String supplierId = "88be816b-c3e9-432b-9111-45af8ba70bfb";
 		// String boxNo = "BOX1";
 
 		// Add path parameters dynamically
 		// request.pathParam("userId", userId);
-		request.pathParam("auctionId", auctionId);
+		//request.pathParam("auctionId", auctionId);
 		// request.pathParam("countryId", countryId);
 		// request.pathParam("supplierId", supplierId);
 		// request.pathParam("boxNo", boxNo);
 
 		// Send the GET request with query parameters
-		Response response = request.get("/suppliers/summary/{auctionId}");
+		Response response = request.get("/suppliers/summary");
 
 		if (response.getStatusCode() == 401) {
 			System.out.println("Token expired. Please generate a new token.");
@@ -207,20 +207,20 @@ public class BidderSupplierSummaryController extends BaseTest {
 		request.header("Content-Type", "application/json");
 
 		// String userId="7828500F-5781-40D5-9E61-ADF2A09EB993";
-		String auctionId = "693c945d-da0a-4e41-b93a-081e0f033662";
+		//String auctionId = "693c945d-da0a-4e41-b93a-081e0f033662";
 		// String countryId = "435a09ab-ad6e-11ef-8d40-c8d3ffbc6ac6";
 		// String supplierId = "88be816b-c3e9-432b-9111-45af8ba70bfb";
 		// String boxNo = "BOX1";
 
 		// Add path parameters dynamically
 		// request.pathParam("userId", userId);
-		request.pathParam("auctionId", auctionId);
+		//request.pathParam("auctionId", auctionId);
 		// request.pathParam("countryId", countryId);
 		// request.pathParam("supplierId", supplierId);
 		// request.pathParam("boxNo", boxNo);
 
 		// Send the GET request with query parameters
-		Response response = request.get("/bidders/summary/{auctionId}");
+		Response response = request.get("/bidders/summary");
 
 		if (response.getStatusCode() == 401) {
 			System.out.println("Token expired. Please generate a new token.");

@@ -4,7 +4,7 @@
 	<test
 		thread-count="5"
 		name="admin">
-		<!--<classes>
+		<classes>
 		   <class name="admin.AutoBiddingController" />
 			<class name="admin.UserController" />
 			<class name="admin.AuctionController" />
@@ -46,22 +46,23 @@
 			<class name="admin.ShapeController" />
 			<class name="admin.UserControllerMerged" />
 
-		</classes>-->
- <classes>
+		</classes>
+		
+<!--  <classes>
       <class name="admin.LedgerController">
         <methods>
           <include name="beforeSuite"/>
           <include name="afterSuite"/>
           <include name="test02Ledger"/>
         </methods>
-      </class> <!-- admin.LedgerController -->
+      </class> admin.LedgerController
       <class name="admin.LotController">
         <methods>
           <include name="beforeSuite"/>
           <include name="afterSuite"/>
           <include name="test07BiddersPdf"/>
         </methods>
-      </class> <!-- admin.LotController -->
+      </class> admin.LotController
       <class name="admin.MailInvoiceLotDiamondController">
         <methods>
           <include name="beforeSuite"/>
@@ -69,14 +70,14 @@
           <include name="Test02PostSendmailEmailIdAuctionID"/>
           <include name="Test03PostSendMailsAllLots"/>
         </methods>
-      </class> <!-- admin.MailInvoiceLotDiamondController -->
+      </class> admin.MailInvoiceLotDiamondController
       <class name="admin.SymmetryController">
         <methods>
           <include name="beforeSuite"/>
           <include name="afterSuite"/>
           <include name="test03SymmetryExcel"/>
         </methods>
-      </class> <!-- admin.SymmetryController -->
+      </class> admin.SymmetryController
       <class name="admin.DatabaseBackupController">
         <methods>
           <include name="beforeSuite"/>
@@ -84,21 +85,21 @@
           <include name="test03GetBackupurl"/>
           <include name="test01PostStart"/>
         </methods>
-      </class> <!-- admin.DatabaseBackupController -->
+      </class> admin.DatabaseBackupController
       <class name="admin.ShapeController">
         <methods>
           <include name="beforeSuite"/>
           <include name="afterSuite"/>
           <include name="testcreateSymmetry03"/>
         </methods>
-      </class> <!-- admin.ShapeController -->
+      </class> admin.ShapeController
       <class name="admin.UserController">
         <methods>
           <include name="beforeSuite"/>
           <include name="afterSuite"/>
           <include name="UpdateUserUpload"/>
         </methods>
-      </class> <!-- admin.UserController -->
-    </classes>		
+      </class> admin.UserController -->
+<!--     </classes> -->		
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
