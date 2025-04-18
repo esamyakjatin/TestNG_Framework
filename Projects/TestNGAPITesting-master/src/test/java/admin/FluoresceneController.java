@@ -1,15 +1,9 @@
 package admin;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import io.restassured.RestAssured;
@@ -27,9 +21,9 @@ public class FluoresceneController extends BaseTest {
 		RestAssured.baseURI = "http://localhost:8080/api/v1";
 		RequestSpecification request = RestAssured.given();
 
-		String encryptedCredentials = Constant.adminCredentials; 
+		 String encryptedCredentials = Constant.adminCredentials; 
 
-		request.body(encryptedCredentials);
+		 request.body(encryptedCredentials);
 
 
 		String token = Constant.authToken;
@@ -84,65 +78,63 @@ public class FluoresceneController extends BaseTest {
 	}
 
 	@Test
-public void test02PostFluorescene() {
-        
-        // Set the base URI
-        RestAssured.baseURI = "http://localhost:8080/api/v1"; 
-        RequestSpecification request = RestAssured.given();
-        
-        String encryptedCredentials = Constant.adminCredentials; 
+	public void test02PostFluorescene() {
 
-		request.body(encryptedCredentials);
-        String token = Constant.authToken;  
-        
-        request.header("Authorization", "Bearer " + token);  // Add Bearer token in Authorization header
-        
-        // Set the Content-Type header to application/json
-        request.header("Content-Type", "application/json");  
-        
-        String uniqueName = "india" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
-        
-        // Create the JSON body for the POST request
-        String jsonBody = "{\n" +
-                         
-                          "  \"desc\": \"-\",\n" +
-                          "  \"code\": \"5\",\n" +
-                          "  \"srNo\": 0,\n" +
-                          "  \"fluoId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n" +
-                          "  \"name\": \""+uniqueName+"\",\n" +
-                          "  \"count\": 0,\n" +
-                          "  \"createDate\": \"string\"\n" +  // Removed the trailing comma here
-                          "}";
+		// Set the base URI
+		RestAssured.baseURI = "http://localhost:8080/api/v1";
+		RequestSpecification request = RestAssured.given();
+		 String encryptedCredentials = Constant.adminCredentials; 
 
-        // Add the JSON body to the request
-        request.body(jsonBody);
-        
-        // Send the POST request
-        Response response = request.post("/fluorescene");
-        
-        // Print the response status and body for debugging
-        System.out.println("The status received: " + response.statusLine());
-        System.out.println("Response: " + response.getBody().asString());  // Added response logging
-        System.out.println("---------------Response Details---------------");
-        int statusCode = response.getStatusCode();
-        System.out.println("Status Code: " + statusCode);
-        
-        // Check if the status code is 200 (OK) or 201 (Created)
-        if (statusCode == 200) {
-            System.out.println("Request succeeded: Data inserted successfully.");
-        } else if (statusCode == 201) {
-            System.out.println("Request succeeded: Symmetry created.");
-        } else if (statusCode == 400) {
-            System.out.println("Bad Request: Invalid input.");
-        } else if (statusCode == 403) {
-            System.out.println("Forbidden: Access is denied.");
-        } else if (statusCode == 500) {
-            System.out.println("Internal Server Error: The server encountered an unexpected condition.");
-        }
+		 request.body(encryptedCredentials);
 
-        // Assert that the status code is 200 (OK) or 201 (Created)
-        Assert.assertTrue(statusCode == 200 || statusCode == 201, "Expected 200 OK or 201 Created, but got: " + statusCode);
-    }
+
+		String token = Constant.authToken;
+
+		request.header("Authorization", "Bearer " + token); // Add Bearer token in Authorization header
+
+		// Set the Content-Type header to application/json
+		request.header("Content-Type", "application/json");
+
+		String uniqueName = "india" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
+		
+		// Create the JSON body for the POST request
+		String jsonBody = "{\n" +
+
+				"  \"desc\": \"-\",\n" + "  \"code\": \"5\",\n" + "  \"srNo\": 0,\n"
+				+ "  \"fluoId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n" + "  \"name\": \""+uniqueName+"\",\n"
+				+ "  \"count\": 0,\n" + "  \"createDate\": \"string\"\n" + // Removed the trailing comma here
+				"}";
+
+		// Add the JSON body to the request
+		request.body(jsonBody);
+
+		// Send the POST request
+		Response response = request.post("/fluorescene");
+
+		// Print the response status and body for debugging
+		System.out.println("The status received: " + response.statusLine());
+		System.out.println("Response: " + response.getBody().asString()); // Added response logging
+		System.out.println("---------------Response Details---------------");
+		int statusCode = response.getStatusCode();
+		System.out.println("Status Code: " + statusCode);
+
+		// Check if the status code is 200 (OK) or 201 (Created)
+		if (statusCode == 200) {
+			System.out.println("Request succeeded: Data inserted successfully.");
+		} else if (statusCode == 201) {
+			System.out.println("Request succeeded: Symmetry created.");
+		} else if (statusCode == 400) {
+			System.out.println("Bad Request: Invalid input.");
+		} else if (statusCode == 403) {
+			System.out.println("Forbidden: Access is denied.");
+		} else if (statusCode == 500) {
+			System.out.println("Internal Server Error: The server encountered an unexpected condition.");
+		}
+
+		// Assert that the status code is 200 (OK) or 201 (Created)
+		Assert.assertTrue(statusCode == 200 || statusCode == 201,
+				"Expected 200 OK or 201 Created, but got: " + statusCode);
+	}
 
 	@Test
 	public void tset03PostFluoresceneExcel() {
@@ -151,9 +143,9 @@ public void test02PostFluorescene() {
 		RestAssured.baseURI = "http://localhost:8080/api/v1";
 		RequestSpecification request = RestAssured.given();
 
-		String encryptedCredentials = Constant.adminCredentials; 
+		 String encryptedCredentials = Constant.adminCredentials; 
 
-		request.body(encryptedCredentials);
+		 request.body(encryptedCredentials);
 
 
 		String token = Constant.authToken;
@@ -162,43 +154,10 @@ public void test02PostFluorescene() {
 		// Set the Content-Type header to multipart/form-data for file upload
 		request.header("Content-Type", "multipart/form-data");
 
-		File file = null;
-		try {
-
-			// Specify the file to upload (replace with your actual file path)
-			String filePath = Constant.FILE_PATH + "/src/test/resources/flourescene_Masters_Excel.xlsx";
-			System.out.println("filePath: " + filePath);
-			file = new File(filePath); // Update with
-			
-			FileInputStream in = new FileInputStream(file);
-			 XSSFWorkbook workbook = new XSSFWorkbook(in);
-			 XSSFSheet sheet = workbook.getSheet("Masters");
-			 XSSFRow row = sheet.getRow(2);
-			 XSSFCell cell = row.getCell(0);
-			 
-			 String existingData = cell.getStringCellValue();
-			 existingData = existingData.substring(0, 2);
-			 System.out.println("existingData: " + existingData);
-			 
-			 String masterName = "NewMaster" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
-			 System.out.println("masterName: " + masterName);
-			
-			 // Writing the workbook 
-	            FileOutputStream out = new FileOutputStream(file); 
-	            cell.setCellValue(masterName);
-	            in.close();
-	            workbook.write(out); 
-	            // 2. force the FileOutputStream to write everything out before closing it
-	            out.flush();
-	            // 3. then close the FileOutputStream
-	            out.close();
-	            // 4. finally close the workbook
-	            workbook.close();
-		} catch (Exception e) {
-			
-			// TODO: handle exception
-			System.out.println("Exception due to " + e.toString());
-		}
+		// Specify the file to upload (replace with your actual file path)
+		File file = new File("C:\\WorkSpaces\\Swastik2425_Workspace\\Postsample\\Testing/flourescene_Masters_Excel.xlsx"); // Update with
+																											// actual
+																											// file path
 
 		// Add the file as part of the multipart request
 		request.multiPart("file", file);
@@ -225,9 +184,11 @@ public void test02PostFluorescene() {
 		RestAssured.baseURI = "http://localhost:8080/api/v1";
 		RequestSpecification request = RestAssured.given();
 
-		String encryptedCredentials = Constant.adminCredentials; 
+		 String encryptedCredentials = Constant.adminCredentials; 
 
-		request.body(encryptedCredentials);
+		 request.body(encryptedCredentials);
+
+
 		String token = Constant.authToken;
 		request.header("Authorization", "Bearer " + token); // Add Bearer token in Authorization header
 
@@ -260,4 +221,35 @@ public void test02PostFluorescene() {
 		// valid
 		Assert.assertEquals(statusCode, 200, "Expected 200 OK, but got: " + statusCode);
 	}
+	
+	@Test
+    public void testDeleteFluorescene() {
+        // Base URI
+        RestAssured.baseURI = "http://localhost:8080/api/v1";
+
+        // Path variable
+        String fluoresceneId = "123e4567-e89b-12d3-a456-426614174000"; // Replace with a valid fluoresceneId to delete
+
+        // Send DELETE request
+        Response response = RestAssured
+            .given()
+            .header("Authorization", "Bearer " + Constant.authToken) // Replace with actual auth token
+            .delete("/fluorescene/" + fluoresceneId);
+
+        // Debug output
+        System.out.println("Status Code: " + response.statusCode());
+        System.out.println("Response Body:\n" + response.getBody().asPrettyString());
+
+        // Assertions
+        Assert.assertEquals(200, response.statusCode()); // Check for 200 OK status
+        Assert.assertTrue(response.getBody().asString().contains("Fluorescene deleted successfully"));
+
+        // Additional assertion: Check if the fluorescene no longer exists (GET request for example)
+        Response checkResponse = RestAssured
+            .given()
+            .header("Authorization", "Bearer " + Constant.authToken)
+            .get("/fluorescene/" + fluoresceneId);
+        
+        Assert.assertEquals(404, checkResponse.statusCode());
+    }
 }

@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="admin.LotDiamondPdfController">
+      <class name="admin.LotUploadController02">
         <methods>
           <include name="beforeSuite"/>
           <include name="afterSuite"/>
-          <include name="test01GetCorrectionStockNumber"/>
+          <include name="Test01LotDiamondExcelUpload"/>
         </methods>
-      </class> <!-- admin.LotDiamondPdfController -->
+      </class> <!-- admin.LotUploadController02 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

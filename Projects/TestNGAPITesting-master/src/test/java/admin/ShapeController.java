@@ -21,9 +21,10 @@ public class ShapeController extends BaseTest {
 		RestAssured.baseURI = "http://localhost:8080/api/v1";
 		RequestSpecification request = RestAssured.given();
 
-		String encryptedCredentials = Constant.adminCredentials; 
+		 String encryptedCredentials = Constant.adminCredentials; 
 
-		request.body(encryptedCredentials);
+		    //request.queryParam("payload", encryptedCredentials);
+		 request.body(encryptedCredentials);
 
 		String token = Constant.authToken;
 
@@ -84,9 +85,9 @@ public class ShapeController extends BaseTest {
 		RestAssured.baseURI = "http://localhost:8080/api/v1";
 		RequestSpecification request = RestAssured.given();
 
-		String encryptedCredentials = Constant.adminCredentials; 
+		 String encryptedCredentials = Constant.adminCredentials; 
 
-		request.body(encryptedCredentials);
+		 request.body(encryptedCredentials);
 
 
 		String token = Constant.authToken;
@@ -140,9 +141,10 @@ public class ShapeController extends BaseTest {
 		RestAssured.baseURI = "http://localhost:8080/api/v1";
 		RequestSpecification request = RestAssured.given();
 
-		String encryptedCredentials = Constant.adminCredentials; 
+		// Add Authorization header for Bearer Token Authentication
+		 String encryptedCredentials = Constant.adminCredentials; 
 
-		request.body(encryptedCredentials);
+		 request.body(encryptedCredentials);
 
 
 		String token = Constant.authToken;
@@ -152,18 +154,9 @@ public class ShapeController extends BaseTest {
 		// Set the Content-Type header to multipart/form-data for file upload
 		request.header("Content-Type", "multipart/form-data");
 
-		File file = null;
-		try {
-
-			// Specify the file to upload (replace with your actual file path)
-			String filePath = Constant.FILE_PATH + "/src/test/resources/shape_Masters_Excel.xlsx";
-			System.out.println("filePath: " + filePath);
-			file = new File(filePath); // Update with
-		} catch (Exception e) {
-			
-			// TODO: handle exception
-			System.out.println("Exception due to " + e.toString());
-		}
+		// Specify the file to upload (replace with your actual file path)
+		File file = new File("C:\\WorkSpaces\\Swastik2425_Workspace\\Postsample\\Testing/01.xlsx"); // Update with actual
+																								// file path
 
 		// Add the file as part of the multipart request
 		request.multiPart("file", file);
@@ -190,9 +183,11 @@ public class ShapeController extends BaseTest {
 		RestAssured.baseURI = "http://localhost:8080/api/v1";
 		RequestSpecification request = RestAssured.given();
 
-		String encryptedCredentials = Constant.adminCredentials; 
+		// Add Authorization header for Bearer Token Authentication
+		 String encryptedCredentials = Constant.adminCredentials; 
 
-		request.body(encryptedCredentials);
+		 request.body(encryptedCredentials);
+
 		String token = Constant.authToken;
 
 		request.header("Authorization", "Bearer " + token);
@@ -233,5 +228,242 @@ public class ShapeController extends BaseTest {
 		// valid
 		Assert.assertEquals(statusCode, 200, "Expected 200 OK, but got: " + statusCode);
 	}
+
+	@Test
+	public void test08UpdateShape() {
+
+	    // Set base URI
+	    RestAssured.baseURI = "http://localhost:8080/api/v1";
+	    RequestSpecification request = RestAssured.given();
+
+	    // Set headers
+	    String token = Constant.authToken;
+	    request.header("Authorization", "Bearer " + token);
+	    request.header("Content-Type", "application/json");
+
+	    // Shape ID to update
+	    String shapeId = "584f6f69-d00e-11ef-9169-06f17fc4baf3"; // Replace with a real shape UUID
+
+	    // Request JSON body
+	    String jsonBody = "{\n" +
+	            "  \"desc\": \"Updated shape description\",\n" +
+	            "  \"code\": \"SHAPE001\",\n" +
+	            "  \"srNo\": 1,\n" +
+	            "  \"shapeId\": \"" + shapeId + "\",\n" +
+	            "  \"name\": \"Round Brilliant\",\n" +
+	            "  \"count\": 10,\n" +
+	            "  \"createdDate\": \"2025-04-18\"\n" +
+	            "}";
+
+	    // Attach request body
+	    request.body(jsonBody);
+
+	    // Perform PUT request
+	    Response response = request.put("/shape/" + shapeId);
+
+	    // Log response
+	    System.out.println("The status received: " + response.statusLine());
+	    System.out.println("Response: " + response.getBody().asString());
+	    System.out.println("---------------Response Details---------------");
+
+	    int statusCode = response.getStatusCode();
+
+	    // Status handling
+	    switch (statusCode) {
+	        case 200:
+	        case 204:
+	            System.out.println("Update succeeded.");
+	            break;
+	        case 400:
+	            System.out.println("Bad Request.");
+	            break;
+	        case 403:
+	            System.out.println("Forbidden: Access denied.");
+	            break;
+	        case 404:
+	            System.out.println("Shape not found.");
+	            break;
+	        case 500:
+	            System.out.println("Internal server error.");
+	            break;
+	    }
+
+	    // Final assertion
+	    Assert.assertTrue(statusCode == 200 || statusCode == 204,
+	            "Expected 200 OK or 204 No Content, but got: " + statusCode);
+	}
+	
+	@Test
+	public void test09DeleteShape() {
+
+	    // Set base URI
+	    RestAssured.baseURI = "http://localhost:8080/api/v1";
+	    RequestSpecification request = RestAssured.given();
+
+	    // Set headers
+	    String token = Constant.authToken;
+	    request.header("Authorization", "Bearer " + token);
+
+	    // Shape ID to delete
+	    String shapeId = "3fa85f64-5717-4562-b3fc-2c963f66afa6"; // Replace with actual UUID to delete
+
+	    // Perform DELETE request
+	    Response response = request.delete("/shape/" + shapeId);
+
+	    // Log response
+	    System.out.println("The status received: " + response.statusLine());
+	    System.out.println("Response: " + response.getBody().asString());
+	    System.out.println("---------------Response Details---------------");
+
+	    int statusCode = response.getStatusCode();
+
+	    // Status handling
+	    switch (statusCode) {
+	        case 200:
+	        case 204:
+	            System.out.println("Delete succeeded.");
+	            break;
+	        case 400:
+	            System.out.println("Bad Request.");
+	            break;
+	        case 403:
+	            System.out.println("Forbidden: Access denied.");
+	            break;
+	        case 404:
+	            System.out.println("Shape not found.");
+	            break;
+	        case 500:
+	            System.out.println("Internal server error.");
+	            break;
+	    }
+
+	    // Final assertion
+	    Assert.assertTrue(statusCode == 200 || statusCode == 204,
+	            "Expected 200 OK or 204 No Content, but got: " + statusCode);
+	}
+
+	@Test
+	public void test10CreateShape() {
+
+	    // Set base URI
+	    RestAssured.baseURI = "http://localhost:8080/api/v1";
+	    RequestSpecification request = RestAssured.given();
+
+	    // Set headers
+	    String token = Constant.authToken;
+	    request.header("Authorization", "Bearer " + token);
+	    request.header("Content-Type", "application/json");
+
+	    // JSON body (excluding shapeId, which is generated by backend)
+	    String jsonBody = "{\n" +
+	            "  \"desc\": \"Round EED Brilliant\",\n" +
+	            "  \"code\": \"RB\",\n" +
+	            "  \"srNo\": 18,\n" +
+	            "  \"name\": \"Round\",\n" +
+	            "  \"count\": 0,\n" +
+	            "  \"createdDate\": \"2025-04-18\"\n" +
+	            "}";
+
+	    request.body(jsonBody);
+
+	    // POST request
+	    Response response = request.post("/shape");
+
+	    // Log response
+	    System.out.println("The status received: " + response.statusLine());
+	    System.out.println("Response: " + response.getBody().asString());
+	    System.out.println("---------------Response Details---------------");
+
+	    int statusCode = response.getStatusCode();
+
+	    // Status handling
+	    switch (statusCode) {
+	        case 200:
+	        case 201:
+	            System.out.println("Shape created successfully.");
+	            break;
+	        case 400:
+	            System.out.println("Bad Request: Invalid input.");
+	            break;
+	        case 403:
+	            System.out.println("Forbidden: Access denied.");
+	            break;
+	        case 500:
+	            System.out.println("Internal Server Error.");
+	            break;
+	    }
+
+	    // Final assertion
+	    Assert.assertTrue(statusCode == 200 || statusCode == 201,
+	            "Expected 200 OK or 201 Created, but got: " + statusCode);
+	}
+	
+	@Test
+	public void test11UploadShapeExcel() {
+
+	    // Set base URI
+	    RestAssured.baseURI = "http://localhost:8080/api/v1";
+	    RequestSpecification request = RestAssured.given();
+
+	    // Set headers
+	    String token = Constant.authToken;
+	    request.header("Authorization", "Bearer " + token);
+	    request.contentType("multipart/form-data");
+
+	    // Path to your Excel file (update the path as needed)
+	    File file = new File("C:\\TestNG_Framework\\Projects\\TestNGAPITesting-master\\src\\test\\resources/Shape_Excel.xlsx"); // <-- your test file
+
+	    // Attach file
+	    request.multiPart("file", file);
+
+	    // POST request
+	    Response response = request.post("/shape/excel");
+
+	    // Log response
+	    System.out.println("Status Line: " + response.statusLine());
+	    System.out.println("Response Body: " + response.getBody().asString());
+	    System.out.println("---------------Response Details---------------");
+
+	    int statusCode = response.getStatusCode();
+
+	    // Status Handling
+	    switch (statusCode) {
+	        case 200:
+	        case 201:
+	            System.out.println("Excel uploaded successfully.");
+	            break;
+	        case 400:
+	            System.out.println("Bad Request: Check Excel format.");
+	            break;
+	        case 500:
+	            System.out.println("Server Error: File parsing failed.");
+	            break;
+	    }
+
+	    // Final assertion
+	    Assert.assertTrue(statusCode == 200 || statusCode == 201,
+	            "Expected 200 OK or 201 Created, but got: " + statusCode);
+	}
+	
+	@Test
+    public void testGetShapes() {
+        // Set base URI
+        RestAssured.baseURI = "http://localhost:8080/api/v1";
+
+        // Create GET request
+        Response response = RestAssured.given()
+                .header("Authorization", "Bearer " + Constant.authToken)  // Add authorization token if required
+                .get("/shapes");
+
+        // Print response for debugging
+        System.out.println("Response Status: " + response.statusLine());
+        System.out.println("Response Body: " + response.getBody().asString());
+
+        // Check if response code is 200 (OK)
+        int statusCode = response.getStatusCode();
+        Assert.assertEquals(statusCode, 200, "Expected status code 200 but got: " + statusCode);
+    }
+
+
 
 }

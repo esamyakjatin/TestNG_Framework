@@ -1,15 +1,9 @@
 package admin;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import io.restassured.RestAssured;
@@ -27,9 +21,12 @@ public class SymmetryController extends BaseTest {
 		RestAssured.baseURI = "http://localhost:8080/api/v1";
 		RequestSpecification request = RestAssured.given();
 
-		String encryptedCredentials = Constant.adminCredentials; 
+		//request.queryParam("username", Constant.adminUserName);
+		//request.queryParam("password", Constant.adminPassword);
+		 String encryptedCredentials = Constant.adminCredentials; 
 
-		request.body(encryptedCredentials);
+		    //request.queryParam("payload", encryptedCredentials);
+		 request.body(encryptedCredentials);
 		String token = Constant.authToken;
 
 		request.header("Authorization", "Bearer " + token); // Add Bearer token in Authorization header
@@ -90,9 +87,10 @@ public class SymmetryController extends BaseTest {
 		RestAssured.baseURI = "http://localhost:8080/api/v1";
 		RequestSpecification request = RestAssured.given();
 
-		String encryptedCredentials = Constant.adminCredentials; 
+		 String encryptedCredentials = Constant.adminCredentials; 
 
-		request.body(encryptedCredentials);
+		 request.body(encryptedCredentials);
+
 
 		String token = Constant.authToken;
 		request.header("Authorization", "Bearer " + token);
@@ -145,9 +143,10 @@ public class SymmetryController extends BaseTest {
 		RestAssured.baseURI = "http://localhost:8080/api/v1";
 		RequestSpecification request = RestAssured.given();
 
-		String encryptedCredentials = Constant.adminCredentials; 
+		// Add Authorization header for Bearer Token Authentication
+		 String encryptedCredentials = Constant.adminCredentials; 
 
-		request.body(encryptedCredentials);
+		 request.body(encryptedCredentials);
 
 
 		String token = Constant.authToken;
@@ -156,42 +155,10 @@ public class SymmetryController extends BaseTest {
 		// Set the Content-Type header to multipart/form-data for file upload
 		request.header("Content-Type", "multipart/form-data");
 
-		File file = null;
-		try {
-
-			// Specify the file to upload (replace with your actual file path)
-			String filePath = Constant.FILE_PATH + "/src/test/resources/symmetry_Masters_Excel.xlsx";
-			System.out.println("filePath: " + filePath);
-			file = new File(filePath); // Update with
-			
-			FileInputStream in = new FileInputStream(file);
-			 XSSFWorkbook workbook = new XSSFWorkbook(in);
-			 XSSFSheet sheet = workbook.getSheet("Masters");
-			 XSSFRow row = sheet.getRow(2);
-			 XSSFCell cell = row.getCell(0);
-			 
-			 String existingData = cell.getStringCellValue();
-			 System.out.println("existingData: " + existingData);
-			 
-			 String masterName = existingData + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
-			 System.out.println("masterName: " + masterName);
-			
-			 // Writing the workbook 
-	            FileOutputStream out = new FileOutputStream(file); 
-	            cell.setCellValue(masterName);
-	            in.close();
-	            workbook.write(out); 
-	            // 2. force the FileOutputStream to write everything out before closing it
-	            out.flush();
-	            // 3. then close the FileOutputStream
-	            out.close();
-	            // 4. finally close the workbook
-	            workbook.close();
-		} catch (Exception e) {
-			
-			// TODO: handle exception
-			System.out.println("Exception due to " + e.toString());
-		}
+		// Specify the file to upload (replace with your actual file path)
+		File file = new File("C:\\WorkSpaces\\Swastik2425_Workspace\\Postsample\\Testing/symmetry_Masters_Excel.xlsx"); // Update with
+																										// actual file
+																										// path
 
 		// Add the file as part of the multipart request
 		request.multiPart("file", file);
@@ -218,10 +185,9 @@ public class SymmetryController extends BaseTest {
 		// Set the base URI
 		RestAssured.baseURI = "http://localhost:8080/api/v1";
 		RequestSpecification request = RestAssured.given();
-		
-		String encryptedCredentials = Constant.adminCredentials; 
+		 String encryptedCredentials = Constant.adminCredentials; 
 
-		request.body(encryptedCredentials);
+		 request.body(encryptedCredentials);
 
 		String token = Constant.authToken;
 		request.header("Authorization", "Bearer " + token);
@@ -262,5 +228,56 @@ public class SymmetryController extends BaseTest {
 		// valid
 		Assert.assertEquals(statusCode, 200, "Expected 200 OK, but got: " + statusCode);
 	}
+	
+	@Test
+	public void test07DeleteSymmetry() {
+
+	    // Set base URI
+	    RestAssured.baseURI = "http://localhost:8080/api/v1";
+	    RequestSpecification request = RestAssured.given();
+
+	    // Set headers
+	    String token = Constant.authToken;
+	    request.header("Authorization", "Bearer " + token);
+	    request.header("Content-Type", "application/json");
+
+	    // Symmetry ID to delete
+	    String symmetryId = "3fa85f64-5717-4562-b3fc-2c963f66afa6";  // Replace with an existing UUID
+
+	    // Perform DELETE request
+	    Response response = request.delete("/symmetry/" + symmetryId);
+
+	    // Log response details
+	    System.out.println("The status received: " + response.statusLine());
+	    System.out.println("Response: " + response.getBody().asString());
+	    System.out.println("---------------Response Details---------------");
+
+	    int statusCode = response.getStatusCode();
+
+	    // Status handling
+	    switch (statusCode) {
+	        case 200:
+	        case 204:
+	            System.out.println("Delete succeeded.");
+	            break;
+	        case 400:
+	            System.out.println("Bad Request: Invalid ID.");
+	            break;
+	        case 403:
+	            System.out.println("Forbidden: Access is denied.");
+	            break;
+	        case 404:
+	            System.out.println("Not Found: Symmetry not found.");
+	            break;
+	        case 500:
+	            System.out.println("Internal Server Error.");
+	            break;
+	    }
+
+	    // Final assertion
+	    Assert.assertTrue(statusCode == 200 || statusCode == 204,
+	            "Expected 200 OK or 204 No Content, but got: " + statusCode);
+	}
+
 
 }

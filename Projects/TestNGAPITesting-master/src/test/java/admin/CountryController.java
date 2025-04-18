@@ -235,4 +235,29 @@ public class CountryController extends BaseTest {
 		// valid
 		Assert.assertEquals(statusCode, 200, "Expected 200 OK, but got: " + statusCode);
 	}
+	
+	@Test
+    public void testDeleteCompany() {
+        // Base URI
+        RestAssured.baseURI = "http://localhost:8080/api/v1";
+
+        // Replace with a valid companyId (UUID)
+        String companyId = "f47ac10b-58cc-4372-a567-0e02b2c3d479";
+
+        // Send DELETE request
+        Response response = RestAssured
+            .given()
+            .header("Authorization", "Bearer " + Constant.authToken) // Ensure token is valid
+            .delete("/company/" + companyId);
+
+        // Debug output
+        System.out.println("Status Code: " + response.getStatusCode());
+        System.out.println("Response Body:\n" + response.getBody().asPrettyString());
+
+        // Assertions
+        Assert.assertEquals(200, response.getStatusCode());
+
+        String body = response.getBody().asString().toLowerCase();
+        Assert.assertTrue(body.contains("deleted") || body.contains("success"));
+    }
 }

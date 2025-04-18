@@ -259,4 +259,29 @@ public void test02PostCut() {
 		// valid
 		Assert.assertEquals(statusCode, 200, "Expected 200 OK, but got: " + statusCode);
 	}
+	
+	 @Test
+	    public void testDeleteCut() {
+	        // Base URI
+	        RestAssured.baseURI = "http://localhost:8080/api/v1";
+
+	        // Sample cutId to delete (replace with valid UUID from your database)
+	        String cutId = "123e4567-e89b-12d3-a456-426614174000";
+
+	        // Send DELETE request
+	        Response response = RestAssured
+	            .given()
+	            .header("Authorization", "Bearer " + Constant.authToken) // Ensure this token is valid
+	            .delete("/cut/" + cutId);
+
+	        // Output for debugging
+	        System.out.println("Status Code: " + response.getStatusCode());
+	        System.out.println("Response Body:\n" + response.getBody().asPrettyString());
+
+	        // Validate response
+	        Assert.assertEquals(200, response.getStatusCode());
+
+	        String responseBody = response.getBody().asString().toLowerCase();
+	        Assert.assertTrue(responseBody.contains("deleted") || responseBody.contains("success"));
+	    }
 }
